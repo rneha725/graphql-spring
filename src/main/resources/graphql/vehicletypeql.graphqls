@@ -1,0 +1,14 @@
+type VehicleType {
+    id: ID!,
+    typeName: String!
+}
+
+type Query {
+    vehicleTypes:[VehicleType]
+    vehicleType(id: ID): VehicleType
+}
+
+type Mutation {
+    createVehicleType(id: Int!, typeName: String!): VehicleType
+}
+

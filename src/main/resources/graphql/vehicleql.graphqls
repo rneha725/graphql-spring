@@ -1,15 +1,29 @@
 
 type Vehicle {
     id: ID!,
-    type: String,
+    typeId: VehicleType,
     modelCode: String,
     brandName: String,
     launchDate: String
 }
-type Query {
+
+extend type Query {
     vehicles(count: Int):[Vehicle]
     vehicle(id: ID):Vehicle
 }
-type Mutation {
-    createVehicle(type: String!, modelCode: String!, brandName: String, launchDate: String):Vehicle
+
+input VehicleInput {
+    typeId: Int!
+    modelCode: String!
+    brandName: String
+    launchDate: String
 }
+
+extend type Mutation {
+    createVehicle(typeId: Int!, modelCode: String!, brandName: String, launchDate: String): Vehicle
+}
+
+#schema {
+#    query: VehicleQuery
+#    mutation: VehicleMutation
+#}

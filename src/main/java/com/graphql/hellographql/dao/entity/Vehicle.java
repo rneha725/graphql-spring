@@ -18,8 +18,9 @@ public class Vehicle implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "type", nullable = false)
-    private String type;
+    @ManyToOne
+    @JoinColumn(name = "type_id", nullable = false, updatable = false)
+    private VehicleType typeId;
 
     @Column(name = "model_code", nullable = false)
     private String modelCode;
